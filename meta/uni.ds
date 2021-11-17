@@ -1,0 +1,2895 @@
+/*
+ * Author       : dynamicdigitalsolutions103
+ * Generated on : 17-Nov-2021 00:35:09 PST
+ * Version      : 1.0
+ */
+ application "Uni"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Australia/Brisbane"
+ 	time format = "24-hr"
+	section User_View
+	{
+		displayname= "User View"
+		icon = "users-2-woman"
+		form Artifact
+		{
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Date_Time
+			(
+    			type = datetime
+				displayname = "Date-Time"
+				initial value = "${zoho.currenttime}"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Story
+			(
+    			type = richtext
+				height = 200px
+				toolbar = enable
+				[
+					style, font-color, background-color, alignment, link, table, bullets-and-numbering, 
+					font-size : {1, 2, 3, 4, 5, 6, 7},
+					font-family : {"Serif", "Arimo", "Ptmono", "Heuristica", "OpenSans", "Tinos", "Lato", "DejaVuSans", "ComicNeue", "EBGaramond", "RobotoCondensed", "ArchivoBlack", "Carlito"}
+				]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = public_url,file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Url
+			(
+    			type = url
+				enable  linkname
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			File_upload
+			(
+    			type = upload file
+				displayname = "File upload"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Audio
+			(
+     			type = audio
+    			duration=60
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Video
+			(
+    			type = video
+    			duration=30
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Who_Can_View_this_Artifact
+			(
+				type = list
+				displayname = "Who Can View this Artifact?"
+				values  = User_Type[Status == "Active"].ID
+    			displayformat = [User_Type]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Tag
+			(
+				type = list
+				values  = Tag[Status == "Active"].ID
+    			displayformat = [Tag_Name]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Historical_Site
+			(
+				type = picklist
+				displayname = "Historical Site"
+				values  = Historical_Site.ID
+    			bidirectional = Artifacts
+    			displayformat = [ID]
+				searchable = true
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "users-2-woman"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	section Location
+	{
+		icon = "weather-compass"
+		form Location
+		{
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Status
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Active", "Inactive"}
+				initial value = "Active"
+				layout = 2
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "weather-compass"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	section Historical_Site
+	{
+		displayname= "Historical Site"
+		icon = "design-collection"
+		form Historical_Site
+		{
+			displayname = "Historical Site"
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Location
+			(
+				type = picklist
+				values  = Location.ID
+    			displayformat = [" " + Address.address_line_1 + " " + Address.address_line_2 + " " + Address.district_city + " " + Address.state_province + " " + Address.postal_Code + " " + Address.country]
+				allow new entries = true
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Artifacts
+			(
+				type = grid
+				values  = Artifact.ID
+    			bidirectional = Historical_Site
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Hidden
+			(
+				type = section
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = true
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 3
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Tag
+			(
+				type = list
+				values  = Tag.ID
+    			displayformat = [Tag_Name]
+				searchable = true
+				sortorder = ascending
+				height = 60px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			User_Type
+			(
+				type = list
+				displayname = "User Type"
+				values  = User_Type.ID
+    			displayformat = [User_Type]
+				searchable = true
+				sortorder = ascending
+				height = 60px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "design-collection"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		map Map_view
+		{
+			displayName = "Map"
+   			hide = true
+			show all rows from Historical_Site    
+			(
+				Location
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				User_Type as "User Type"
+				Artifacts.Date_Time as "Artifacts"
+				Tag
+				ID
+				Location.Status
+			)
+			options
+			(
+	 			display field = Address
+         		location
+         		(
+	 		 		latitude  = -25.570744
+	 		 		longitude = 134.576757265821
+         		)
+	 	 		radius = 50000 Kms
+		 		icon = "users-2-pin"
+	 		)
+			custom actions
+			(
+				"View Artifacts"
+				(
+	  			workflow = View_Artifacts
+				)
+			)
+			quickview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = 1
+		     			title = "Overview"
+						fields
+						(
+							Location
+							Address
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								"View Artifacts"
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Location
+							Address
+							User_Type as "User Type"
+							Artifacts.Date_Time as "Artifacts"
+							Tag
+							ID
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Tag
+	{
+		icon = "shopping-tag"
+		form Tag
+		{
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Tag_Name
+			(
+    			type = text
+				displayname = "Tag Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Alt_Text
+			(
+    			type = text
+				displayname = "Alt Text"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Tag_Icon
+			(
+    			type = image
+				displayname = "Tag Icon"
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Active", "Inactive"}
+				initial value = "Active"
+				layout = 2
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "shopping-tag"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	section User_Type
+	{
+		displayname= "User Type"
+		icon = "users-2-woman"
+		form User_Type
+		{
+			displayname = "User Type"
+			success message = "Data Added Successfully!"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			User_Type
+			(
+    			type = text
+				displayname = "User Type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Active", "Inactive"}
+				initial value = "Active"
+				layout = 2
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "users-2-woman"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	section Map_page
+	{
+		displayname= "Map"
+		icon = "location-map-pin"
+				 page Artifact_View(recID,permission) 
+	 	 { 
+ 	 	 displayname = "Artifact View" 
+
+ 	 	 icon = "tech-tv-old" 
+
+ 	 	 hide =  true
+	 	 Content="<zml    \n\t\t\tisPdfEnabled='false'\n\t\t\n\t\t\tisPrintEnabled='false'\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<dsp id='html_snippet' bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet(recID,permission)\ncontent\n&lt;%{\n\tpermission = thisapp.portal.loginUserProfile();\n\tfetchedHistoricalSite = Historical_Site[ID == recID.toLong()];\n\tfetchedPermissionID = User_Type[User_Type == permission].ID;\n\tcount = 1;\n\tfor each  rec in fetchedHistoricalSite.Artifacts\n\t{\n\t\tif(rec.Who_Can_View_this_Artifact.contains(fetchedPermissionID))\n\t\t{\n\t\t\tif(!rec.Image.isEmpty())\n\t\t\t{\n\t\t\t\tfname = rec.Image.getsuffix(&quot;downqual = \\&quot;https:\/\/creatorexport.zoho.com\/sharedBy\/appLinkName\/viewLinkName\/fieldName\/image\/&quot;).getprefix(&quot;\\&quot; border =&quot;);\n\t\t\t\turls = &quot;\/file&quot; + zoho.appuri + &quot;Artifact_Report\/&quot; + rec.ID + &quot;\/Image\/image-download?filepath=\/&quot; + fname;\n\t\t\t}\n\t\t\t%&gt;\n&lt;b&gt;&lt;h3&gt;Artifact &lt;%=count%&gt;&lt;\/h3&gt;&lt;\/b&gt;\n&lt;%\n\t\t\tif(!rec.Story.isEmpty())\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;b&gt;Story:&lt;\/b&gt; &lt;%=rec.Story%&gt;&lt;br&gt;\n&lt;%\n\t\t\t}\n\t\t\tif(!rec.Url.isEmpty())\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;b&gt;External Link:&lt;\/b&gt; &lt;%=rec.Url%&gt;&lt;br&gt;\n&lt;%\n\t\t\t}\n\t\t\tif(!rec.File_upload.isEmpty())\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;b&gt;File Download:&lt;\/b&gt; &lt;%=rec.File_upload%&gt;&lt;br&gt;\n&lt;%\n\t\t\t}\n\t\t\tif(!rec.Image.isEmpty())\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;b&gt;Image:&lt;\/b&gt;&lt;br&gt;&lt;img src=&quot;&lt;%=urls%&gt;&quot;  width=&quot;400&quot; height=&quot;auto&quot; &gt;&lt;br&gt;\n&lt;%\n\t\t\t}\n\t\t\tif(!rec.Audio.isEmpty())\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;b&gt;Audio:&lt;\/b&gt;&lt;br&gt;&lt;audio width=&quot;400&quot; height=&quot;240&quot; controls&gt;&lt;source src=&quot;\/file\/dynamicdigitalsolutions103\/uni\/Artifact_Report\/&lt;%=rec.ID%&gt;\/Audio\/download?filepath=\/&lt;%=rec.Audio%&gt;&quot;; type=&quot;audio\/mpeg&quot;&gt;&lt;\/audio&gt;&lt;br&gt;\n&lt;%\n\t\t\t}\n\t\t\tif(!rec.Video.isEmpty())\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;b&gt;Video:&lt;\/b&gt;&lt;br&gt;&lt;video width=&quot;400&quot; height=&quot;auto&quot; controls&gt;&lt;source src=&quot;\/file\/dynamicdigitalsolutions103\/uni\/Artifact_Report\/&lt;%=rec.ID%&gt;\/Video\/download?filepath=\/&lt;%=rec.Video%&gt;&quot;; type=&quot;video\/mp4&quot;&gt;&lt;\/video&gt;&lt;br&gt;\n&lt;%\n\t\t\t}\n\t\t\tif(!rec.Date_Time == null)\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;b&gt;Created:&lt;\/b&gt; &lt;%=rec.Date_Time%&gt; &lt;br&gt;\n&lt;%\n\t\t\t}\n\t\t\t%&gt;\n&lt;br&gt;\n\t&lt;hr&gt;\n\t&lt;br&gt;\n&lt;%\n\t\t\tcount = count + 1;\n\t\t}\n\t}\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>" 
+ 	 	}
+				 page Map_htmlview_Mobile(userProfile,tagID) 
+	 	 { 
+ 	 	 displayname = "Map" 
+
+ 	 	 icon = "location-map-pin" 
+
+ 	 	 hide =  true
+	 	 Content="<zml    \n\t\t\tisPdfEnabled='false'\n\t\t\n\t\t\tisPrintEnabled='false'\n\t\t\n\t\t\n\t\t\twebDeviceConfig='{\"layout\":{\"displayType\":\"plain\",\"design\":\"fluid\",\"style\":\"padding-right:0px;padding-top:0px;padding-bottom:0px;padding-left:0px;\"}}'\n\t\t\n\t\t\tmobileDeviceConfig='{\"layout\":{\"displayType\":\"card\",\"design\":\"actual\",\"forcedOrientation\":false}}'\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<row>\n\t<column\n   \t\t width=\"20%\"\n   \t>\n\t<dsp id='html_snippet' bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet(userProfile,tagID)\ncontent\n&lt;%{\n\tvar = thisapp.portal.loginUserProfile();\n\tfetched = Tag[ID != 0];\n\tfetchedCount = Tag[ID != 0].count();\n\ttry \n\t{\n\t\tpercent = fetchedCount \/ 100;\n\t}\n\tcatch (e)\n\t{\n\t}\n\t%&gt;\n&lt;style&gt;\n\t.buttonHover{\n\t\tpadding:5px;\n\t\tmargin:auto;\n\t\twidth:50px;\n\t\tborder:2px solid red;\n\t}\n\t.buttonHover:hover{\n\t\tbackground:black;\n\t\tcolor:white;\n\t\tborder:none;\n\t}\n\t&lt;\/style&gt;\n&lt;br&gt;\n&lt;div style=&quot;text-align:center&quot;&gt;\n&lt;table style=&quot;width:100%;text-align:center&quot;&gt;\n&lt;%\n\tfor each  rec in fetched\n\t{\n\t\tfname = rec.Tag_Icon.getsuffix(&quot;downqual = \\&quot;https:\/\/creatorexport.zoho.com\/sharedBy\/appLinkName\/viewLinkName\/fieldName\/image\/&quot;).getprefix(&quot;\\&quot; border =&quot;);\n\t\turls = &quot;\/file&quot; + zoho.appuri + &quot;Tag_Report\/&quot; + rec.ID + &quot;\/Tag_Icon\/image-download?filepath=\/&quot; + fname;\n\t\tif(tagID == rec.Tag_Name)\n\t\t{\n\t\t\t%&gt;\n&lt;tr style=&quot;width:&lt;%=percent%&gt;%;text-align:center; border: 5px solid yellow;border-radius:20px&quot;&gt;\n            &lt;a href=&quot;#View:Map_htmlview_Mobile?tagID=&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n\n&lt;img class=&quot;tag&quot; src=&quot;&lt;%=urls%&gt;&quot;  width=&quot;25&quot; height=&quot;auto&quot; alt=&quot;&lt;%=rec.Alt_Text%&gt;&quot; title=&quot;&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;%=rec.Tag_Name%&gt;&lt;\/p&gt;\n&lt;\/a&gt;\n\n&lt;\/tr&gt;\n&lt;%\n\t\t}\n\t\telse\n\t\t{\n\t\t\t%&gt;\n&lt;tr style=&quot;width:&lt;%=percent%&gt;%;text-align:center;&quot;&gt;\n&lt;a style=&quot;text-decoration:none;color:red&quot; href=&quot;#View:Map_htmlview_Mobile?tagID=&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n\n&lt;img src=&quot;&lt;%=urls%&gt;&quot;  width=&quot;25&quot; height=&quot;auto&quot; alt=&quot;&lt;%=rec.Alt_Text%&gt;&quot; title=&quot;&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;%=rec.Tag_Name%&gt;&lt;\/p&gt;\n&lt;\/a&gt;\n\n&lt;\/tr&gt;\n&lt;%\n\t\t}\n\t}\n\t%&gt;\n&lt;\/table&gt;\n&lt;\/div&gt;\n&lt;div style=&quot;text-align:center;margin-top:15px;margin-bottom:30px&quot;&gt;\n&lt;a  style=&quot;text-decoration:none;color:red;&quot; href=&quot;#View:Map_htmlview_Mobile?&quot;&gt;&lt;p class=&quot;buttonHover&quot;&gt;CLEAR&lt;\/p&gt;&lt;\/a&gt;\n&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column><column\n   \t\t width=\"80%\"\n   \t>\n\t<dsp id='html_snippet1' bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet1(userProfile,tagID)\ncontent\n&lt;%{\n\tvar = thisapp.portal.loginUserProfile();\n\t%&gt;\n&lt;div style=&quot;height:1000px&quot;elName=&apos;zc-component&apos; zc_mobileview=&apos;inline&apos; viewLinkName=&apos;Map_view&apos; params=&apos;zc_Filter=false&amp;zc_ColMenu=false&amp;zc_AddRec=false&amp;zc_SecHeader=false&amp;zc_Header=false&amp;User_Type=[&lt;%=var%&gt;]&amp;User_Type_op=26&amp;Tag=[&lt;%=tagID%&gt;]&amp;Tag_op=26&apos;&gt;&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<dsp id='html_snippet2' bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet2(userProfile,tagID)\ncontent\n&lt;%{\n\t%&gt;\n&lt;style&gt;\n\t.donate{\n\t\tpadding:5px;\n\t\tbackground:grey;\n\t\tcolor:white;\n\t\tmargin:auto;\n\t\tborder:none;\n\t\ttext-decoration:none;\n\t}\n\t.donate:hover{\n\t\tbackground:black;\n\t\tcolor:white;\n\t\tborder:none;\n\t}\n\t&lt;\/style&gt;\n&lt;a style=&quot;text-decoration:none;&quot; href=&quot;https:\/\/www.patreon.com\/product\/lite&quot; target=&quot;_blank&quot;&gt;\n&lt;div class=&quot;donate&quot; style=&quot;text-align:center&quot;&gt;\nDONATE\n&lt;\/div&gt;\n&lt;\/a&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>" 
+ 	 	}
+				 page Map_htmlview(userProfile,tagID) 
+	 	 { 
+ 	 	 displayname = "Map" 
+
+ 	 	 icon = "location-map-pin" 
+	 	 Content="<zml    \n\t\t\tisPdfEnabled='false'\n\t\t\n\t\t\tisPrintEnabled='false'\n\t\t\n\t\t\n\t\t\twebDeviceConfig='{\"layout\":{\"displayType\":\"plain\",\"design\":\"fluid\",\"style\":\"padding-right:0px;padding-top:0px;padding-bottom:0px;padding-left:0px;\"}}'\n\t\t\n\t\t\tmobileDeviceConfig='{\"layout\":{\"displayType\":\"card\",\"design\":\"onebyone\",\"forcedOrientation\":false}}'\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<dsp id='html_snippet' bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet(userProfile,tagID)\ncontent\n&lt;%{\n\tvar = thisapp.portal.loginUserProfile();\n\tfetched = Tag[ID != 0];\n\tfetchedCount = Tag[ID != 0].count();\n\ttry \n\t{\n\t\tpercent = fetchedCount \/ 100;\n\t}\n\tcatch (e)\n\t{\n\t}\n\t%&gt;\n&lt;style&gt;\n\t.buttonHover{\n\t\tpadding:5px;\n\t\tmargin:auto;\n\t\twidth:100px;\n\t\tborder:2px solid red;\n\t}\n\t.buttonHover:hover{\n\t\tbackground:black;\n\t\tcolor:white;\n\t\tborder:none;\n\t}\n\t&lt;\/style&gt;\n&lt;br&gt;\n&lt;table style=&quot;width:100%&quot;&gt;\n\t&lt;tr style=&quot;width:100%&quot;&gt;\n&lt;%\n\tfor each  rec in fetched\n\t{\n\t\tfname = rec.Tag_Icon.getsuffix(&quot;downqual = \\&quot;https:\/\/creatorexport.zoho.com\/sharedBy\/appLinkName\/viewLinkName\/fieldName\/image\/&quot;).getprefix(&quot;\\&quot; border =&quot;);\n\t\turls = &quot;\/file&quot; + zoho.appuri + &quot;Tag_Report\/&quot; + rec.ID + &quot;\/Tag_Icon\/image-download?filepath=\/&quot; + fname;\n\t\tif(tagID == rec.Tag_Name)\n\t\t{\n\t\t\t%&gt;\n&lt;td style=&quot;width:&lt;%=percent%&gt;%;text-align:center; border: 5px solid yellow;border-radius:20px&quot;&gt;\n            &lt;a href=&quot;#View:Map_htmlview?tagID=&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n\n&lt;img class=&quot;tag&quot; src=&quot;&lt;%=urls%&gt;&quot;  width=&quot;25&quot; height=&quot;auto&quot; alt=&quot;&lt;%=rec.Alt_Text%&gt;&quot; title=&quot;&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;%=rec.Tag_Name%&gt;&lt;\/p&gt;\n&lt;\/a&gt;\n\n&lt;\/td&gt;\n&lt;%\n\t\t}\n\t\telse\n\t\t{\n\t\t\t%&gt;\n&lt;td style=&quot;width:&lt;%=percent%&gt;%;text-align:center;&quot;&gt;\n&lt;a style=&quot;text-decoration:none;color:red&quot; href=&quot;#View:Map_htmlview?tagID=&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n\n&lt;img src=&quot;&lt;%=urls%&gt;&quot;  width=&quot;25&quot; height=&quot;auto&quot; alt=&quot;&lt;%=rec.Alt_Text%&gt;&quot; title=&quot;&lt;%=rec.Tag_Name%&gt;&quot;&gt;\n&lt;p style=&quot;font-size: 10px&quot;&gt;&lt;%=rec.Tag_Name%&gt;&lt;\/p&gt;\n&lt;\/a&gt;\n\n&lt;\/td&gt;\n&lt;%\n\t\t}\n\t}\n\t%&gt;\n&lt;\/tr&gt;\n&lt;\/table&gt;\n\n&lt;div style=&quot;text-align:center;&quot;&gt;\n&lt;a  style=&quot;text-decoration:none;color:red;&quot; href=&quot;#View:Map_htmlview?&quot;&gt;&lt;h3 class=&quot;buttonHover&quot;&gt;CLEAR&lt;\/h3&gt;&lt;\/a&gt;\n&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<dsp id='html_snippet1' bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet1(userProfile,tagID)\ncontent\n&lt;%{\n\tvar = thisapp.portal.loginUserProfile();\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; zc_mobileview=&apos;inline&apos; viewLinkName=&apos;Map_view&apos; params=&apos;zc_Filter=false&amp;zc_ColMenu=false&amp;zc_SecHeader=false&amp;zc_Header=true&amp;User_Type=[&lt;%=var%&gt;]&amp;User_Type_op=26&amp;Tag=[&lt;%=tagID%&gt;]&amp;Tag_op=26&apos;&gt;&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width=\"100%\"\n   \t>\n\t<dsp id='html_snippet2' bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet2(userProfile,tagID)\ncontent\n&lt;%{\n\t%&gt;\n&lt;style&gt;\n\t.donate{\n\t\tpadding:5px;\n\t\tbackground:grey;\n\t\tcolor:white;\n\t\tmargin:auto;\n\t\tborder:none;\n\t\ttext-decoration:none;\n\t}\n\t.donate:hover{\n\t\tbackground:black;\n\t\tcolor:white;\n\t\tborder:none;\n\t}\n\t&lt;\/style&gt;\n&lt;a style=&quot;text-decoration:none;&quot; href=&quot;https:\/\/www.patreon.com\/product\/lite&quot;target=&quot;_blank&quot;&gt;\n&lt;div class=&quot;donate&quot; style=&quot;text-align:center&quot;&gt;\nDONATE\n&lt;\/div&gt;\n&lt;\/a&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>" 
+ 	 	}
+	}
+	section Settings
+	{
+		default list Artifact_Report
+		{
+			displayName = "Artifact Report"
+   			hide = true
+			show all rows from Artifact    
+			(
+				Story
+				Image
+				Url
+				File_upload as "File upload"
+				Audio
+				Video
+				Date_Time as "Date-Time"
+				ID
+				Tag
+				Who_Can_View_this_Artifact as "Who Can View this Artifact?"
+				Historical_Site as "Historical Site"
+			)
+			options
+			(
+				icon = "business-laptop-71"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Story
+							Image
+							Url
+							File_upload as "File upload"
+							Audio
+							Video
+							Date_Time as "Date-Time"
+							ID
+							Historical_Site as "Historical Site"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Story
+							Image
+							Url
+							File_upload as "File upload"
+							Audio
+							Video
+							Date_Time as "Date-Time"
+							Tag
+							Who_Can_View_this_Artifact as "Who Can View this Artifact?"
+							Historical_Site as "Historical Site"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		default list Historical_Site_Report
+		{
+			displayName = "Historical Site Report"
+   			hide = true
+			show all rows from Historical_Site    
+			(
+				Location
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Tag
+				User_Type as "User Type"
+			)
+			options
+			(
+				icon = "business-laptop-71"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Location
+							Address
+							Tag
+							User_Type as "User Type"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Location
+							Address
+							Tag
+							User_Type as "User Type"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		default list Tag_Report
+		{
+			displayName = "Tag Report"
+   			hide = true
+			show all rows from Tag    
+			(
+				Status
+				Tag_Icon as "Tag Icon"
+				Tag_Name as "Tag Name"
+				Alt_Text as "Alt Text"
+			)
+			options
+			(
+				icon = "shopping-tag"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Status
+							Tag_Icon as "Tag Icon"
+							Tag_Name as "Tag Name"
+							Alt_Text as "Alt Text"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Status
+							Tag_Icon as "Tag Icon"
+							Tag_Name as "Tag Name"
+							Alt_Text as "Alt Text"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		default list User_Type_Report
+		{
+			displayName = "User Type Report"
+   			hide = true
+			show all rows from User_Type    
+			(
+				User_Type as "User Type"
+				Status
+				ID
+			)
+			options
+			(
+				icon = "users-2-contacts-44"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							User_Type as "User Type"
+							Status
+							ID
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							User_Type as "User Type"
+							Status
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Request_Forms
+	{
+		displayname= "Request Forms"
+		icon = "design-2-form"
+		form Request_Form
+		{
+			displayname = "New Data Request Form"
+			success message = "Request Added Successfully"
+			field alignment = left
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Display_Address
+			(
+    			type = text
+				displayname = "Display Address"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Historical_Site
+			(
+				type = picklist
+				displayname = "Historical Site"
+				values  = Historical_Site.ID
+    			displayformat = [" " + Address.address_line_1 + " " + Address.district_city + " " + Address.state_province + " " + Address.postal_Code]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Is_the_Artifact_s_Location_above
+			(
+				type = radiobuttons
+				displayname = "Is the Artifact's Location above?"
+				maxchar = 100
+				values = {"Yes", "No"}
+				initial value = "Yes"
+				layout = 2
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Date_Time
+			(
+    			type = datetime
+				displayname = "Date-Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Story
+			(
+    			type = richtext
+				height = 200px
+				toolbar = enable
+				[
+					style, font-color, background-color, alignment, link, table, bullets-and-numbering, 
+					font-size : {1, 2, 3, 4, 5, 6, 7},
+					font-family : {"Serif", "Arimo", "Ptmono", "Heuristica", "OpenSans", "Tinos", "Lato", "DejaVuSans", "ComicNeue", "EBGaramond", "RobotoCondensed", "ArchivoBlack", "Carlito"}
+				]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Url
+			(
+    			type = url
+				enable  linkname
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			File_upload
+			(
+    			type = upload file
+				displayname = "File upload"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Audio
+			(
+     			type = audio
+    			duration=60
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Video
+			(
+    			type = video
+    			duration=30
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have User_Type
+			(
+				type = list
+				displayname = "User Type"
+				values  = User_Type[Status == "Active"].ID
+    			displayformat = [User_Type]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Tag
+			(
+				type = list
+				values  = Tag[Status == "Active"].ID
+    			displayformat = [Tag_Name]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Who_will_be_notified1
+			(
+				type = picklist
+				displayname = "Who will be notified?"
+				values  = Administrators.ID
+    			displayformat = [" " + Name.first_name + " " + Name.last_name + " - " + Email]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = large
+			)
+			must have What_is_your_best_Contact_Email
+			(
+    			type = email
+				displayname = "What is your best Contact Email?"
+				maxchar = 80
+    			description
+    			[
+    				type = help_text
+    			 	message = "The response to this request will be sent to the above (Approved or Declined) Email Address."
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Request_Status
+			(
+				type = radiobuttons
+				displayname = "Request Status"
+				maxchar = 100
+				values = {"Approved", "Pending", "Declined"}
+				layout = 3
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "ui-1-database"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Requests
+		{
+			displayName = "All Data Requests"
+			show all rows from Request_Form    
+			(
+				Date_Time as "Date-Time"
+				Story
+				Image
+				Url
+				File_upload as "File upload"
+				Audio
+				Video
+				User_Type as "User Type"
+				Tag
+				Is_the_Artifact_s_Location_above as "Is the Artifact's Location above?"
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				custom action "APPROVE"
+				(
+	  			workflow = APPROVE
+				show action in edit record menu = true
+				column header = "APPROVE"
+				condition = (Request_Status != "Approved" && Request_Status != "Declined")
+				confirmation before execution
+				(
+					message for individual record = "Are you sure that you want to Approve this Request Form?\n(This decision cannot be undone)"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				Request_Status as "Request Status"
+				Added_User as "Added User"
+				Added_Time as "Added Time"
+				Historical_Site as "Historical Site"
+				What_is_your_best_Contact_Email as "What is your best Contact Email?"
+				Auto_Number as "Auto Number"
+				custom action "DECLINE"
+				(
+	  			workflow = DECLINE
+				show action in edit record menu = true
+				column header = "DECLINE"
+				condition = (Request_Status != "Approved" && Request_Status != "Declined")
+				confirmation before execution
+				(
+					message for individual record = "Are you sure that you want to DECLINE this Request Form?\n(This decision cannot be undone)"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				Display_Address as "Address"
+				Who_will_be_notified1 as "Who will be notified?"
+			)
+			options
+			(
+				icon = "ui-1-database"
+	 		)
+			conditional formatting
+			(
+				"New Formatting"
+				{
+				condition = (Request_Status == "Declined")
+				fields = [Request_Status]
+				format = "font-weight:bold;background-color:#ef1616;"
+				}
+				"New Formatting"
+				{
+				condition = (Request_Status == "Approved")
+				fields = [Request_Status]
+				format = "font-weight:bold;background-color:#5dc35a;"
+				}
+				"New Formatting"
+				{
+				condition = (Request_Status == "Pending")
+				fields = [Request_Status]
+				format = "font-weight:bold;background-color:#ef8216;"
+				}
+				"New Formatting"
+				{
+				condition = (Request_Status == "Pending")
+				fields = [Request_Status]
+				format = "font-weight:bold;background-color:#ef8216;"
+				}
+			)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Auto_Number as "Auto Number"
+							Display_Address as "Address"
+				"APPROVE"
+				"DECLINE"
+							Request_Status as "Request Status"
+							Added_User as "Added User"
+							Added_Time as "Added Time"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Date_Time as "Date-Time"
+							Story
+							Image
+							Url
+							File_upload as "File upload"
+							Audio
+							Video
+							User_Type as "User Type"
+							Tag
+							Is_the_Artifact_s_Location_above as "Is the Artifact's Location above?"
+							Address
+							Request_Status as "Request Status"
+							Historical_Site as "Historical Site"
+							What_is_your_best_Contact_Email as "What is your best Contact Email?"
+							Auto_Number as "Auto Number"
+							Display_Address as "Address"
+							Who_will_be_notified1 as "Who will be notified?"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+		form Request_Permission_Change_Form
+		{
+			displayname = "Permission Change Request Form"
+			success message = "Request Permission Change Added Successfully"
+			field alignment = left
+			Overview
+			(
+				type = section
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+			must have Date_of_Birth
+			(
+    			type = date
+				displayname = "Date of Birth"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = large
+			)
+			What_is_your_best_Contact_Email1
+			(
+    			type = picklist
+				displayname = "What is your best Contact Email?"
+				module = users
+				displayformat = [emailid]
+    			description
+    			[
+    				type = help_text
+    			 	message = "This is automatically added from your login details."
+    			]
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+			must have Gender
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Male", "Female"}
+				layout = 3
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Tribe_Mob_Name
+			(
+    			type = text
+				displayname = "Tribe/Mob Name"
+    			description
+    			[
+    				type = help_text
+    			 	message = "If Applicable."
+    			]
+	 			row = 1
+	 			column = 1   
+				width = large
+			)
+			Request
+			(
+				type = section
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have Permission_Requested
+			(
+				type = picklist
+				displayname = "Permission Requested"
+				values  = User_Type[Status == "Active"].ID
+    			displayformat = [User_Type]
+				sortorder = ascending
+	 			row = 2
+	 			column = 1   
+				width = large
+			)
+			must have Reason_for_Request
+			(
+    			type = textarea
+				displayname = "Reason for Request"
+				height = 100px
+	 			row = 2
+	 			column = 1   
+				width = large
+			)
+			must have Who_will_be_notified
+			(
+				type = picklist
+				displayname = "Who will be notified?"
+				values  = Administrators.ID
+    			displayformat = [" " + Name.first_name + " " + Name.last_name + " -  " + Email]
+				sortorder = ascending
+	 			row = 2
+	 			column = 1   
+				width = large
+			)
+			Request_Status
+			(
+				type = radiobuttons
+				displayname = "Request Status"
+				maxchar = 100
+				values = {"Approved", "Pending", "Declined"}
+				layout = 3
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			customize
+			(
+				icon = "design-2-cursor-not-allowed"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Request_Permission_Changes
+		{
+			displayName = "All Permission Change Requests"
+			show all rows from Request_Permission_Change_Form    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Date_of_Birth as "Date of Birth"
+				Tribe_Mob_Name as "Tribe/Mob Name"
+				Reason_for_Request as "Reason for Request"
+				Who_will_be_notified as "Who will be notified?"
+				Permission_Requested as "Permission Requested"
+				Gender
+				Request_Status as "Request Status"
+				What_is_your_best_Contact_Email1 as "What is your best Contact Email?"
+				custom action "APPROVE"
+				(
+	  			workflow = APPROVE2
+				show action in edit record menu = true
+				column header = "APPROVE"
+				condition = (Request_Status != "Approved" && Request_Status != "Declined")
+				confirmation before execution
+				(
+					message for individual record = "Are you sure you would like to APPROVE this request?\n(This decision cannot be undone)"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				custom action "DECLINE"
+				(
+	  			workflow = DECLINE1
+				show action in edit record menu = true
+				column header = "DECLINE"
+				condition = (Request_Status != "Approved" && Request_Status != "Declined")
+				confirmation before execution
+				(
+					message for individual record = "Are you sure you want to DECLINE this request?\n(This decision cannot be undone)"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+			options
+			(
+				icon = "design-2-cursor-not-allowed"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Name
+							Tribe_Mob_Name as "Tribe/Mob Name"
+							Request_Status as "Request Status"
+							Permission_Requested as "Permission Requested"
+				"APPROVE"
+				"DECLINE"
+							What_is_your_best_Contact_Email1 as "What is your best Contact Email?"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Name
+							Date_of_Birth as "Date of Birth"
+							Tribe_Mob_Name as "Tribe/Mob Name"
+							Reason_for_Request as "Reason for Request"
+							Who_will_be_notified as "Who will be notified?"
+							Permission_Requested as "Permission Requested"
+							Gender
+							Request_Status as "Request Status"
+							What_is_your_best_Contact_Email1 as "What is your best Contact Email?"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Locations
+	{
+		default list Location_Report
+		{
+			displayName = "Location Report"
+   			hide = true
+			show all rows from Location    
+			(
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Status
+			)
+			options
+			(
+				icon = "business-laptop-71"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Address
+							Status
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Address
+							Status
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+	section Administrators
+	{
+		icon = "users-single-04"
+		form Administrators
+		{
+			success message = "Administrator Added Successfully"
+			field alignment = left
+					hide = true
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+			must have Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+			must have Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+			must have users
+			(
+    			type = picklist
+				displayname = "Users"
+				module = users
+				displayformat = [username]
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+	
+			customize
+			(
+				icon = "users-single-04"
+			)
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		default list All_Administrators
+		{
+			displayName = "All Administrators"
+   			hide = true
+			show all rows from Administrators    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Email
+				Phone_Number as "Phone"
+				users as "Users"
+			)
+			options
+			(
+				icon = "travel-world"
+	 		)
+			quickview
+			(
+				layout
+				(
+		 			type = -1
+					datablock1
+					(
+			 			layout type = -1
+		     			title = "Overview"
+						fields
+						(
+							Name
+							Email
+							Phone_Number as "Phone"
+							users as "Users"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+							record
+							(
+								Edit   	   
+								Duplicate   	   
+								Delete   	   
+    						)
+    			)
+    			action
+    			(
+							on click
+							(
+								View Record   	   
+    						)
+							on right click
+							(
+								Edit   	   
+								Delete   	   
+								Duplicate   	   
+								View Record   	   
+    						)
+     			)
+			)
+			detailview
+			(
+				layout
+				(
+		 			type = 1
+					datablock1
+					(
+			 			layout type = -2
+		     			title = "Overview"
+						fields
+						(
+							Name
+							Email
+							Phone_Number as "Phone"
+							users as "Users"
+						)
+					)
+				)
+
+				menu
+    			(
+    	 			header
+    	 			(
+    		 			Edit 
+    		 			Duplicate 
+    		 			Delete 
+    	 			)
+    			)
+			)
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			Fill_Address as "Fill Address"
+			{
+				type =  form
+				form = Historical_Site
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											fetched = Location[ID == input.Location];
+										input.Address.address_line_1 = fetched.Address.address_line_1;
+										input.Address.address_line_2 = fetched.Address.address_line_2;
+										input.Address.district_city = fetched.Address.district_city;
+										input.Address.state_province = fetched.Address.state_province;
+										input.Address.postal_Code = fetched.Address.postal_Code;
+										input.Address.country = fetched.Address.country;
+										input.Address.latitude = fetched.Address.latitude;
+										input.Address.longitude = fetched.Address.longitude;
+										tagList = list();
+										userList = list();
+										for each  rec in input.Artifacts
+										{
+											for each  tag1 in rec.Tag
+											{
+												tagList.add(tag1);
+											}
+											for each  user1 in rec.Who_Can_View_this_Artifact
+											{
+												userList.add(user1);
+											}
+										}
+										input.Tag = tagList;
+										input.User_Type = userList;
+						)
+					}
+				}
+
+			}
+			hide_address_field as "hide address field"
+			{
+				type =  form
+				form = Request_Form
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Address;
+										hide Request_Status;
+										if(input.Is_the_Artifact_s_Location_above == "No")
+										{
+											show Address;
+										}
+										else
+										{
+											hide Address;
+											input.Address = null;
+										}
+						)
+					}
+				}
+
+			}
+			show_hide_address as "show hide address"
+			{
+				type =  form
+				form = Request_Form
+				record event = on add or edit
+
+				on user input of Is_the_Artifact_s_Location_above
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Is_the_Artifact_s_Location_above == "No")
+										{
+											show Address;
+											hide Historical_Site;
+										}
+										else
+										{
+											hide Address;
+											input.Address = null;
+											show Historical_Site;
+										}
+						)
+					}
+				}
+
+			}
+			Hide_fields as "Hide fields"
+			{
+				type =  form
+				form = Historical_Site
+				record event = on add or edit
+					status = inactive
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Hidden;
+						)
+					}
+				}
+
+			}
+			Sets_Status_as_Pending as "Sets Status as Pending"
+			{
+				type =  form
+				form = Request_Form
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Request_Status = "Pending";
+						)
+					}
+				}
+
+			}
+			Validate_Historical_Site as "Validate Historical Site"
+			{
+				type =  form
+				form = Request_Form
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Historical_Site.isEmpty() && input.Address == null)
+										{
+											alert "Please enter a Site Address.";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Sets_Display_Address as "Sets Display Address"
+			{
+				type =  form
+				form = Request_Form
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Display_Address = null;
+										if(!Historical_Site.isEmpty())
+										{
+											fetched = Historical_Site[ID = input.Historical_Site].Address;
+											input.Display_Address = fetched.toString().replaceAll(",",", ");
+										}
+										else if(!Address.isEmpty())
+										{
+											input.Display_Address = input.Address.toString().replaceAll(",",", ");
+										}
+						)
+					}
+				}
+
+			}
+			Hide_Display_Address_Fiel as "Hide Display Address Field"
+			{
+				type =  form
+				form = Request_Form
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Display_Address;
+						)
+					}
+				}
+
+			}
+			Sends_Notification_Email_ as "Sends Notification Email to Admin"
+			{
+				type =  form
+				form = Request_Form
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											midnight = zoho.currentdate + " 00:00:00";
+										lunchTime = zoho.currentdate + " 12:00:00";
+										if(zoho.currenttime >= midnight.toTime() && zoho.currenttime < lunchTime.toTime())
+										{
+											greeting = "Good Morning";
+										}
+										else
+										{
+											greeting = "Good Afternoon";
+										}
+										sendmail
+										[
+											from :zoho.loginuserid
+											to :input.Who_will_be_notified1.Email
+											cc:""
+											subject :"Cultural Heritage App - New Artifact Requested"
+											message :"<div>" + greeting + " " + input.Added_User + " <br>A new request for an Artifact has been received.<br><br>Thank you and kind regards,<br>Cultural Heritage App Admin</div>"
+										]
+						)
+					}
+				}
+
+			}
+			set_user_field as "set user field"
+			{
+				type =  form
+				form = Request_Permission_Change_Form
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.What_is_your_best_Contact_Email1 = thisapp.portal.loginUserName();
+						)
+					}
+				}
+
+			}
+			disable_fields as "disable fields"
+			{
+				type =  form
+				form = Request_Permission_Change_Form
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable What_is_your_best_Contact_Email1;
+										disable Request_Status;
+						)
+					}
+				}
+
+			}
+			Sets_Status_as_Pending1 as "Sets Status as Pending"
+			{
+				type =  form
+				form = Request_Permission_Change_Form
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Request_Status = "Pending";
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+		functions
+		{
+			APPROVE as "APPROVE"
+			{
+				type =  functions
+				form = Request_Form
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						if(!input.Historical_Site.isEmpty())
+										{
+											siteID = input.Historical_Site;
+										}
+										else if(input.Historical_Site.isEmpty() && Address != null)
+										{
+											newLocation = insert into Location
+											[
+												Added_User=zoho.loginuser
+												Address.address_line_1=input.Address.address_line_1
+												Address.address_line_2=input.Address.address_line_2
+												Address.district_city=input.Address.district_city
+												Address.state_province=input.Address.state_province
+												Address.country=input.Address.country
+												Address.postal_Code=input.Address.postal_Code
+												Address.latitude=input.Address.latitude
+												Address.longitude=input.Address.longitude
+												Status="Active"
+											];
+											newHistoricalSite = insert into Historical_Site
+											[
+												Added_User=zoho.loginuser
+												Location=newLocation
+												User_Type=input.User_Type
+												Tag=input.Tag
+												Address.address_line_1=input.Address.address_line_1
+												Address.address_line_2=input.Address.address_line_2
+												Address.district_city=input.Address.district_city
+												Address.state_province=input.Address.state_province
+												Address.country=input.Address.country
+												Address.postal_Code=input.Address.postal_Code
+												Address.latitude=input.Address.latitude
+												Address.longitude=input.Address.longitude
+											];
+											siteID = newHistoricalSite;
+											input.Historical_Site = siteID;
+										}
+										newArtifact = insert into Artifact
+										[
+											Who_Can_View_this_Artifact=input.User_Type
+											Tag=input.Tag
+											Added_User=zoho.loginuser
+											Story=input.Story
+											Audio=input.Audio
+											Video=input.Video
+											File_upload=input.File_upload
+											Date_Time=input.Date_Time
+											Url=input.Url
+											Image=input.Image
+											Historical_Site=siteID
+										];
+										input.Request_Status = "Approved";
+										midnight = zoho.currentdate + " 00:00:00";
+										lunchTime = zoho.currentdate + " 12:00:00";
+										if(zoho.currenttime >= midnight.toTime() && zoho.currenttime < lunchTime.toTime())
+										{
+											greeting = "Good Morning";
+										}
+										else
+										{
+											greeting = "Good Afternoon";
+										}
+										sendmail
+										[
+											from :zoho.loginuserid
+											to :input.What_is_your_best_Contact_Email
+											cc:""
+											subject :"Cultural Heritage App - Request New Artifact to be Added"
+											message :"<div>" + greeting + " " + input.Added_User + " <br>After reviewing your request we have decided to Approve the addition of this data to our database.<br><br>Thank you for contributing to this important project.<br><br>Thank you and kind regards,<br>Cultural Heritage App Admin</div>"
+										]
+					)
+					}
+				}
+			}
+			DECLINE as "DECLINE"
+			{
+				type =  functions
+				form = Request_Form
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						midnight = zoho.currentdate + " 00:00:00";
+										lunchTime = zoho.currentdate + " 12:00:00";
+										if(zoho.currenttime >= midnight.toTime() && zoho.currenttime < lunchTime.toTime())
+										{
+											greeting = "Good Morning";
+										}
+										else
+										{
+											greeting = "Good Afternoon";
+										}
+										sendmail
+										[
+											from :zoho.loginuserid
+											to :input.What_is_your_best_Contact_Email
+											cc:""
+											subject :"Cultural Heritage App - Request New Artifact to be Added"
+											message :"<div>" + greeting + " " + input.Added_User + " <br>After reviewing your request we have decided to Decline to add this data to our database.<br><br>If you feel that this outcome is unsatisfactory please use the Contact Details on the app to contact Admin.<br><br>Thank you and kind regards,<br>Cultural Heritage App Admin</div>"
+										]
+										input.Request_Status = "Declined";
+					)
+					}
+				}
+			}
+			View_Artifacts as "View Artifacts"
+			{
+				type =  functions
+				form = Historical_Site
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#View:Artifact_View?recID=" + input.ID,"parent window");
+					)
+					}
+				}
+			}
+			APPROVE2 as "APPROVE"
+			{
+				type =  functions
+				form = Request_Permission_Change_Form
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Request_Status = "Approved";
+										midnight = zoho.currentdate + " 00:00:00";
+										lunchTime = zoho.currentdate + " 12:00:00";
+										if(zoho.currenttime >= midnight.toTime() && zoho.currenttime < lunchTime.toTime())
+										{
+											greeting = "Good Morning";
+										}
+										else
+										{
+											greeting = "Good Afternoon";
+										}
+										sendmail
+										[
+											from :zoho.loginuserid
+											to :input.What_is_your_best_Contact_Email1.Email
+											cc:""
+											subject :"Cultural Heritage App - Request New Artifact to be Added"
+											message :"<div>" + greeting + " " + input.Added_User + " <br>After reviewing your request we have decided to Approve your request to have your permission changed to " + input.Permission_Requested.User_Type + ".<br><br>Thank you for contributing to this important project.<br><br>Thank you and kind regards,<br>Cultural Heritage App Admin</div>"
+										]
+										updateUser = thisapp.portal.assignUserInProfile(input.What_is_your_best_Contact_Email1.Email,input.Permission_Requested.User_Type);
+					)
+					}
+				}
+			}
+			DECLINE1 as "DECLINE"
+			{
+				type =  functions
+				form = Request_Permission_Change_Form
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						midnight = zoho.currentdate + " 00:00:00";
+										lunchTime = zoho.currentdate + " 12:00:00";
+										if(zoho.currenttime >= midnight.toTime() && zoho.currenttime < lunchTime.toTime())
+										{
+											greeting = "Good Morning";
+										}
+										else
+										{
+											greeting = "Good Afternoon";
+										}
+										sendmail
+										[
+											from :zoho.loginuserid
+											to :input.What_is_your_best_Contact_Email1
+											cc:""
+											subject :"Cultural Heritage App - Request New Artifact to be Added"
+											message :"<div>" + greeting + " " + input.Added_User + " <br>After reviewing your request we have decided to Decline you Permission Change to " + input.Permission_Requested.User_Type + "<br><br>If you feel that this outcome is unsatisfactory please use the Contact Details on the app to contact Admin.<br><br>Thank you and kind regards,<br>Cultural Heritage App Admin</div>"
+										]
+										input.Request_Status = "Declined";
+					)
+					}
+				}
+			}
+		}
+	}
+	customize
+	{
+		
+		layout = "tab"
+		color = "black"
+		base theme = "professional"
+		new theme = 4
+		new theme color = 6
+		icons = true
+		icons style = outline
+	}
+
+
+	phone
+	{
+		section  User_View
+		{
+			displayname= "User View"
+			icon = "users-2-woman"
+			form  Artifact
+			{
+				layout = auto
+				icon = "users-2-woman"
+				hide = true
+			}
+			list Artifact_Report
+			{
+				icon = "business-laptop-71"
+				hide = true
+			}
+		}
+		section  Map_page
+		{
+			displayname= "Map"
+			icon = "location-map-pin"
+			page Map_htmlview
+			{
+				icon = "users-2-pin"
+				hide = true
+			}
+			page Artifact_View
+			{
+				icon = "tech-tv-old"
+				hide = true
+			}
+			page Map_htmlview_Mobile
+			{
+				icon = "location-map-pin"
+			}
+		}
+		section  Request_Forms
+		{
+			displayname= "Request Forms"
+			icon = "design-2-form"
+			form  Request_Form
+			{
+				layout = auto
+				icon = "ui-1-database"
+			}
+			list All_Requests
+			{
+				icon = "ui-1-database"
+			}
+			form  Request_Permission_Change_Form
+			{
+				layout = auto
+				icon = "design-2-cursor-not-allowed"
+			}
+			list All_Request_Permission_Changes
+			{
+				icon = "design-2-cursor-not-allowed"
+			}
+		}
+		section  Location
+		{
+			icon = "weather-compass"
+			form  Location
+			{
+				layout = auto
+				icon = "weather-compass"
+				hide = true
+			}
+			list Location_Report
+			{
+				icon = "business-laptop-71"
+				hide = true
+			}
+		}
+		section  Historical_Site
+		{
+			displayname= "Historical Site"
+			icon = "design-collection"
+			form  Historical_Site
+			{
+				layout = auto
+				icon = "design-collection"
+				hide = true
+			}
+			list Historical_Site_Report
+			{
+				icon = "business-laptop-71"
+				hide = true
+			}
+			map Map_view
+			{
+				icon = "users-2-pin"
+				hide = true
+			}
+		}
+		section  Tag
+		{
+			icon = "shopping-tag"
+			form  Tag
+			{
+				layout = auto
+				icon = "shopping-tag"
+				hide = true
+			}
+			list Tag_Report
+			{
+				icon = "shopping-tag"
+				hide = true
+			}
+		}
+		section  User_Type
+		{
+			displayname= "User Type"
+			icon = "users-2-woman"
+			form  User_Type
+			{
+				layout = auto
+				icon = "users-2-woman"
+				hide = true
+			}
+			list User_Type_Report
+			{
+				icon = "users-2-contacts-44"
+				hide = true
+			}
+		}
+		section  Request_Permission_Changes
+		{
+			displayname= "Request Permission Changes"
+			icon = "design-2-cursor-not-allowed"
+		}
+		section  Administrators
+		{
+			icon = "users-single-04"
+			form  Administrators
+			{
+				layout = auto
+				icon = "users-single-04"
+				hide = true
+			}
+			list All_Administrators
+			{
+				icon = "travel-world"
+				hide = true
+			}
+		}
+		customize
+		{
+			colour = red
+        	layout = slidingpane
+		 	icons style = outline
+		}
+	}
+	
+}

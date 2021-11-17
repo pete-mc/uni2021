@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<roles>
+    <role name="CEO">
+        <reports-to/>
+        <share-data-with-peers>false</share-data-with-peers>
+        <description>User belonging to this role can access data of all other users.</description>
+    </role>
+</roles>

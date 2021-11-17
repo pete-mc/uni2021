@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<profiles>
+    <version>1</version>
+    <profile name="Administrator">
+        <description>This profile will have all the permissions.</description>
+        <profile-type>1</profile-type>
+        <profile-level-permissions>CHAT</profile-level-permissions>
+        <profile-status>Active</profile-status>
+    </profile>
+    <profile name="Read">
+        <description>This profile will have read permission for all components</description>
+        <profile-type>1</profile-type>
+        <profile-level-permissions>CHAT</profile-level-permissions>
+        <profile-status>Active</profile-status>
+    </profile>
+    <profile name="Write">
+        <description>This profile will have write permission for all components</description>
+        <profile-type>1</profile-type>
+        <profile-level-permissions>CHAT</profile-level-permissions>
+        <profile-status>Active</profile-status>
+    </profile>
+    <profile name="General Population">
+        <description>This is the default profile having only add and view permission.
+</description>
+        <profile-type>2</profile-type>
+        <profile-level-permissions>CUSTOM_PROFILE</profile-level-permissions>
+        <profile-status>Active</profile-status>
+        <modules>
+            <module name="Artifact">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Request_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Tag_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Map_htmlview">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Request_Permission_Change_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Historical_Site">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="User_Type">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Map_htmlview_Mobile">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Historical_Site_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="User_Type_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Administrators">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY</module-level-permissions>
+            </module>
+            <module name="Location">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Artifact_View">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Map_view">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Artifact_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Tag">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Location_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+        </modules>
+    </profile>
+    <profile name="Elder">
+        <description>Elder permission set. Can see all Artifacts that have the Elder Tag.
+</description>
+        <profile-type>2</profile-type>
+        <profile-level-permissions>CUSTOM_PROFILE</profile-level-permissions>
+        <profile-status>Active</profile-status>
+        <modules>
+            <module name="Artifact">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Request_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="All_Request_Permission_Changes">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,EDIT</module-level-permissions>
+            </module>
+            <module name="Tag_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Map_htmlview">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Request_Permission_Change_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="Historical_Site">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="User_Type">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Map_htmlview_Mobile">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="User_Type_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Administrators">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY</module-level-permissions>
+            </module>
+            <module name="Location">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="All_Requests">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,EDIT</module-level-permissions>
+            </module>
+            <module name="Artifact_View">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Map_view">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Artifact_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Tag">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Location_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+        </modules>
+    </profile>
+    <profile name="Admin">
+        <description>Can delete, import and export.
+</description>
+        <profile-type>2</profile-type>
+        <profile-level-permissions>CUSTOM_PROFILE</profile-level-permissions>
+        <profile-status>Active</profile-status>
+        <modules>
+            <module name="Artifact">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Request_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="All_Request_Permission_Changes">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="Tag_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="Map_htmlview">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Request_Permission_Change_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="Historical_Site">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="User_Type">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="Map_htmlview_Mobile">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="All_Administrators">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="Historical_Site_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="User_Type_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="Administrators">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="Location">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="All_Requests">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="Artifact_View">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Map_view">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="Artifact_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+            <module name="Tag">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,EXPORT,IMPORT,VIEWALL,MODIFYALL</module-level-permissions>
+            </module>
+            <module name="Location_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW,DELETE,EDIT</module-level-permissions>
+            </module>
+        </modules>
+    </profile>
+    <profile name="Child">
+        <description>Child permission set. Can see all Artifacts that have the Child Tag.
+</description>
+        <profile-type>2</profile-type>
+        <profile-level-permissions>CUSTOM_PROFILE</profile-level-permissions>
+        <profile-status>Active</profile-status>
+        <modules>
+            <module name="Artifact">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Request_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Tag_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Map_htmlview">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Request_Permission_Change_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Historical_Site">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="User_Type">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Map_htmlview_Mobile">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="User_Type_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Administrators">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY</module-level-permissions>
+            </module>
+            <module name="Location">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Artifact_View">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Map_view">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Artifact_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Tag">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Location_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+        </modules>
+    </profile>
+    <profile name="Woman">
+        <description>Woman permission set. Can see all Artifacts that have the Woman Tag
+</description>
+        <profile-type>2</profile-type>
+        <profile-level-permissions>CUSTOM_PROFILE</profile-level-permissions>
+        <profile-status>Active</profile-status>
+        <modules>
+            <module name="Artifact">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Request_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Tag_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Map_htmlview">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Request_Permission_Change_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Historical_Site">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="User_Type">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Map_htmlview_Mobile">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="User_Type_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Administrators">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY</module-level-permissions>
+            </module>
+            <module name="Location">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Artifact_View">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Map_view">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Artifact_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Tag">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Location_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+        </modules>
+    </profile>
+    <profile name="Man">
+        <description>Man permission set. Can see all Artifacts that have the Man Tag.
+</description>
+        <profile-type>2</profile-type>
+        <profile-level-permissions>CUSTOM_PROFILE</profile-level-permissions>
+        <profile-status>Active</profile-status>
+        <modules>
+            <module name="Artifact">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Request_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Tag_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Map_htmlview">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Request_Permission_Change_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Historical_Site">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="User_Type">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Map_htmlview_Mobile">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="User_Type_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Administrators">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY</module-level-permissions>
+            </module>
+            <module name="Location">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Artifact_View">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Map_view">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Artifact_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Tag">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Location_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+        </modules>
+    </profile>
+    <profile name="Initiated Man">
+        <description>Initiated Man permission set. Can see all Artifacts that have the Initiated Man Tag.
+</description>
+        <profile-type>2</profile-type>
+        <profile-level-permissions>CUSTOM_PROFILE</profile-level-permissions>
+        <profile-status>Active</profile-status>
+        <modules>
+            <module name="Artifact">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Request_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Tag_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Map_htmlview">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Request_Permission_Change_Form">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS</module-level-permissions>
+            </module>
+            <module name="Historical_Site">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="User_Type">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Map_htmlview_Mobile">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="User_Type_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Administrators">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY</module-level-permissions>
+            </module>
+            <module name="Location">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Artifact_View">
+                <module-type>PAGE</module-type>
+                <module-level-permissions>ACCESS</module-level-permissions>
+            </module>
+            <module name="Map_view">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Artifact_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+            <module name="Tag">
+                <module-type>FORM</module-type>
+                <module-level-permissions>ALL_FIELDS_VISIBILITY,ACCESS,VIEWALL</module-level-permissions>
+            </module>
+            <module name="Location_Report">
+                <module-type>REPORT</module-type>
+                <module-level-permissions>VIEW</module-level-permissions>
+            </module>
+        </modules>
+    </profile>
+</profiles>
